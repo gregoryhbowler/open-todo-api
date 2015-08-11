@@ -11,6 +11,16 @@ class Api::ItemsController < ApiController
     end
   end
 
+  def update
+    list = List.find(params[:list_id])
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      render json: item, status: 200
+    else
+      render json: {}, status: 422
+    end
+  end
+
   private
 
   def item_params
