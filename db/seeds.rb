@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create(username: 'greg', password: 'bowler')
-list = List.create(title: 'testlist', user_id: user.id)
-item = Item.create(description: 'testitem', list_id: list.id)
+user = User.find_or_create_by(username: 'greg', password: 'bowler')
+user2 = User.find_or_create_by(username: 'ricky', password: 'panzer')
+list = List.find_or_create_by(title: 'testlist', user_id: user.id)
+item = Item.find_or_create_by(description: 'testitem', list_id: list.id)
